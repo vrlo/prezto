@@ -32,6 +32,10 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'git' \
+  'ruby' \
+  'syntax-highlighting' \
+  'history-substring-search' \
   'prompt'
 
 #
