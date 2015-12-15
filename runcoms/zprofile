@@ -43,6 +43,8 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  $HOME/.npm_global/bin
+  $HOME/.local/{bin,sbin}
   /usr/local/{bin,sbin}
   $path
 )
@@ -72,3 +74,9 @@ if [[ ! -d "$TMPDIR" ]]; then
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
+
+#
+# Misc variables
+#
+
+export KEYTIMEOUT=1
