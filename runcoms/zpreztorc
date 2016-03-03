@@ -38,6 +38,8 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'osx' \
+  'homebrew' \
   'git' \
   'ruby' \
   'syntax-highlighting' \
