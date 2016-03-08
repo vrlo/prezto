@@ -75,3 +75,6 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 
 # escape timeout
 export KEYTIMEOUT=1
+
+# github token for homebrew
+export HOMEBREW_GITHUB_API_TOKEN=27aa99aec4481d2ba29bb299536d6f937580f31c
