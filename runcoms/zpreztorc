@@ -80,7 +80,7 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 #
 
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
-zstyle ':prezto:module:git:status:ignore' submodules 'all'
+# zstyle ':prezto:module:git:status:ignore' submodules 'all'
 
 #
 # GNU Utility
@@ -133,6 +133,13 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 # Set the prompt to display the return code along with an indicator for non-zero
 # return codes. This is not supported by all prompts.
 zstyle ':prezto:module:prompt' show-return-val 'yes'
+
+#
+# Ruby
+#
+
+# Auto switch the Ruby version on directory change.
+zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
 
 #
 # Python
