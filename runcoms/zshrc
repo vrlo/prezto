@@ -32,3 +32,11 @@ test -e /usr/local/share/zsh/site-functions/aws_zsh_completer.sh && source /usr/
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+
+# program yubikey slot 1 with password from clipboard
+function pby {
+  local slot=1
+  if type ykman >/dev/null; then
+    ykman slot static --no-enter $slot -- "$(pbpaste)"
+  fi
+}
