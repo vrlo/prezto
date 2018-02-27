@@ -36,9 +36,7 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'fasd' \
-  'osx' \
   'tmux' \
-  'homebrew' \
   'git' \
   'ruby' \
   'syntax-highlighting' \
@@ -215,7 +213,7 @@ zstyle ':prezto:module:tmux:auto-start' local 'no'
 zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
 # Integrate with iTerm2.
-zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+# zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
 # Set the default session name:
 # zstyle ':prezto:module:tmux:session' name 'YOUR DEFAULT SESSION NAME'
