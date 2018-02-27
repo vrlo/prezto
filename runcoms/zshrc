@@ -40,3 +40,7 @@ function pby {
     ykman slot static --no-enter $slot -- "$(pbpaste)"
   fi
 }
+# ssh-copy-id-sekey
+alias ssh-copy-id-sekey='SSH_AUTH_SOCK=$HOME/.sekey/ssh-agent.ssh ssh-copy-id'
+# sekey export to clipboard
+alias sekeycopy='SSH_AUTH_SOCK=$HOME/.sekey/ssh-agent.ssh ssh-add -L | pbcopy'
