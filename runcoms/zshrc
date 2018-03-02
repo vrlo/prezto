@@ -12,11 +12,19 @@ fi
 
 # Customize to your needs...
 
+# disable xon/xoff flow control
+stty -ixon
+
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 alias mmv='noglob zmv -W'
+test -e /usr/local/share/zsh/site-functions/aws_zsh_completer.sh && source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
+
+# pyenv
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
