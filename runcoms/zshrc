@@ -44,3 +44,10 @@ function pby {
 alias ssh-copy-id-sekey='SSH_AUTH_SOCK=$HOME/.sekey/ssh-agent.ssh ssh-copy-id'
 # sekey export to clipboard
 alias sekeycopy='SSH_AUTH_SOCK=$HOME/.sekey/ssh-agent.ssh ssh-add -L | pbcopy'
+
+# terraform aliases
+alias tf=terraform
+alias tfi='terraform init'
+alias tfp='terraform plan'
+alias tfa='terraform apply'
+alias tfw='terraform workspace'
