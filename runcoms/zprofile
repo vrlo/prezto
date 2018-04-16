@@ -34,9 +34,6 @@ fi
 if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
-if [[ -z "$LC_ALL" ]]; then
-  export LC_ALL=$LANG
-fi
 
 #
 # Paths
@@ -88,3 +85,7 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 
 # escape timeout
 export KEYTIMEOUT=1
+
+# chef
+export CHEF_CLIENT_NAME=$USER
+export CHEF_KEY_MATERIAL=$(cat ~/.chef/$CHEF_CLIENT_NAME.pem)
