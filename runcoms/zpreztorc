@@ -83,6 +83,8 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
 # zstyle ':prezto:module:git:status:ignore' submodules 'all'
+zstyle ':prezto:module:git:log:oneline' format '%C(auto)%h %s%d'
+zstyle ':prezto:module:git:log:brief' format '%C(auto)%h %s%n(%C(blue)%ar%C(reset) by %C(blue)%an%C(reset))%C(auto)%d'
 
 #
 # GNU Utility
