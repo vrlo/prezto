@@ -45,6 +45,8 @@ typeset -gU cdpath fpath mailpath path
 path=(
   $HOME/bin
   /usr/local/{bin,sbin}
+  $HOME/go/bin
+  /usr/local/opt/go/libexec/bin
   $path
 )
 

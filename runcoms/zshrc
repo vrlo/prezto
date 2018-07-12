@@ -37,7 +37,7 @@ test -e /usr/local/share/zsh/site-functions/aws_zsh_completer.sh && source /usr/
 function pby {
   local slot=1
   if type ykman >/dev/null; then
-    ykman slot static --no-enter $slot -- "$(pbpaste)"
+    ykman otp static --keyboard-layout US --no-enter $slot -- "$(pbpaste)"
   fi
 }
 # ssh-copy-id-sekey
