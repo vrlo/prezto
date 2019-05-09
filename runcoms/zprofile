@@ -89,3 +89,5 @@ export KEYTIMEOUT=1
 # chef
 export CHEF_CLIENT_NAME=$USER
 export CHEF_KEY_MATERIAL=$(cat ~/.chef/$CHEF_CLIENT_NAME.pem)
+
+export PATH="$HOME/.cargo/bin:/usr/local/opt/ruby/bin:$PATH"

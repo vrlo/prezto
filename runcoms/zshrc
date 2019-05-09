@@ -51,3 +51,10 @@ alias tfi='terraform init'
 alias tfp='terraform plan'
 alias tfa='terraform apply'
 alias tfw='terraform workspace'
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/vault vault
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/lseder/Documents/Projects/poc/eip-failover3/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/lseder/Documents/Projects/poc/eip-failover3/node_modules/tabtab/.completions/slss.zsh
