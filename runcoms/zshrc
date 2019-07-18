@@ -19,6 +19,11 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+function iterm2_print_user_vars() {
+  iterm2_set_user_var kubecontext "$(if type kubectl >/dev/null; then kubectl config current-context; fi)"
+  #iterm2_set_user_var kubenamespace "$(if type kubectl >/dev/null; then kubectl config view --minify --output 'jsonpath={..namespace}'; fi)"
+}
+
 alias mmv='noglob zmv -W'
 test -e /usr/local/share/zsh/site-functions/aws_zsh_completer.sh && source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
 
@@ -38,12 +43,57 @@ alias ssh-copy-id-sekey='SSH_AUTH_SOCK=$HOME/.sekey/ssh-agent.ssh ssh-copy-id'
 # sekey export to clipboard
 alias sekeycopy='SSH_AUTH_SOCK=$HOME/.sekey/ssh-agent.ssh ssh-add -L | pbcopy'
 
+# yq like jq for yaml
+function yq {
+  ruby -ryaml -rjson -e 'puts JSON.generate(YAML.parse(STDIN.read))'
+    jq $@ |
+    ruby -ryaml -rjson -e 'puts YAML.dump(JSON.parse(STDIN.read))'
+}
+
 # terraform aliases
 alias tf=terraform
 alias tfi='terraform init'
 alias tfp='terraform plan'
 alias tfa='terraform apply'
 alias tfw='terraform workspace'
+
+# k8s
+K8S_OUTPUT_FORMAT='wide'
+alias k=kubectl
+alias kc='kubectl config'
+alias kcuc='kubectl config use-context'
+alias kcsc='kubectl config set-context'
+alias kcdc='kubectl config delete-context'
+alias kccc='kubectl config current-context'
+alias kcgc='kubectl config get-contexts'
+alias kns='f(){ [[ $# > 0 ]] && kubectl config set-context --current --namespace="$@" || kubectl get ns; unset -f f; }; f'
+alias kaf='kubectl apply -f'
+alias keti='kubectl exec -ti'
+alias kg="kubectl get -o $K8S_OUTPUT_FORMAT"
+alias kgn='kg no'
+alias kgs='kg svc'
+alias kgsw='kgs --watch'
+alias kgp='kg po'
+alias kgpw='kgp --watch'
+alias kgd='kg deploy'
+alias kgsec='kubectl get secret'
+alias kgss='kubectl get statefulset'
+alias kgssw='kgss --watch'
+alias kgsa='kg -A svc'
+alias kgpa='kg -A po'
+alias kgda='kg -A deploy'
+alias kga='kg all'
+alias kgaa='kg all -A'
+alias kd='kubectl describe'
+alias kds='kd svc'
+alias kdp='kd pod'
+alias kdd='kd deploy'
+alias kdsec='kd secret'
+alias kdss='kd statefulset'
+alias kdel='k delete'
+alias kl='kubectl logs'
+alias klf='kubectl logs -f'
+
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/vault vault
