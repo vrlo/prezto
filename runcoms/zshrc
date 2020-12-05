@@ -12,9 +12,15 @@ fi
 
 # Customize to your needs...
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export LC_ALL=$LANG
 
 # jenv
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+
+# perl local::lib
+eval $(perl -I$HOME/perl5/lib -Mlocal::lib)
+
