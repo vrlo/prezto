@@ -12,8 +12,6 @@ fi
 
 # Customize to your needs...
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
-
 # disable xon/xoff flow control
 stty -ixon
 
