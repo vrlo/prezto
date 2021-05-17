@@ -90,4 +90,7 @@ export KEYTIMEOUT=1
 export CHEF_CLIENT_NAME=$USER
 export CHEF_KEY_MATERIAL=$(cat ~/.chef/$CHEF_CLIENT_NAME.pem)
 
-export PATH="$HOME/.cargo/bin:/usr/local/opt/ruby/bin:$PATH"
+export PATH="$(gem env gemdir)/bin:/usr/local/opt/ruby/bin:$PATH"
+
+# Created by `userpath` on 2020-06-15 17:14:46
+export PATH="$PATH:/Users/lseder/.local/bin"

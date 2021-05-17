@@ -12,6 +12,8 @@ fi
 
 # Customize to your needs...
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+
 # disable xon/xoff flow control
 stty -ixon
 
@@ -21,7 +23,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 function iterm2_print_user_vars() {
   iterm2_set_user_var kubecontext "$(if type kubectl >/dev/null; then kubectl config current-context; fi)"
-  #iterm2_set_user_var kubenamespace "$(if type kubectl >/dev/null; then kubectl config view --minify --output 'jsonpath={..namespace}'; fi)"
+  iterm2_set_user_var kubenamespace "$(if type kubectl >/dev/null; then kubectl config view --minify --output 'jsonpath={..namespace}'; fi)"
 }
 
 alias mmv='noglob zmv -W'
@@ -60,23 +62,27 @@ alias tfw='terraform workspace'
 # k8s
 K8S_OUTPUT_FORMAT='wide'
 alias k=kubectl
+alias ka='kubectl apply'
 alias kc='kubectl config'
 alias kcuc='kubectl config use-context'
 alias kcsc='kubectl config set-context'
 alias kcdc='kubectl config delete-context'
 alias kccc='kubectl config current-context'
 alias kcgc='kubectl config get-contexts'
-alias kns='f(){ [[ $# > 0 ]] && kubectl config set-context --current --namespace="$@" || kubectl get ns; unset -f f; }; f'
 alias kaf='kubectl apply -f'
 alias keti='kubectl exec -ti'
 alias kg="kubectl get -o $K8S_OUTPUT_FORMAT"
 alias kgn='kg no'
+alias kgno=kgn
 alias kgs='kg svc'
 alias kgsw='kgs --watch'
 alias kgp='kg po'
+alias kgpo=kgp
 alias kgpw='kgp --watch'
 alias kgd='kg deploy'
 alias kgsec='kubectl get secret'
+alias kgds='kubectl get daemonset'
+alias kgdsw='kgds --watch'
 alias kgss='kubectl get statefulset'
 alias kgssw='kgss --watch'
 alias kgsa='kg -A svc'
@@ -93,6 +99,9 @@ alias kdss='kd statefulset'
 alias kdel='k delete'
 alias kl='kubectl logs'
 alias klf='kubectl logs -f'
+alias krun='kubectl run --generator=run-pod/v1 -it --rm=true --restart=Never'
+alias kctx='kubectx'
+alias kns='kubens'
 
 
 autoload -U +X bashcompinit && bashcompinit
@@ -107,3 +116,11 @@ complete -o nospace -C /usr/local/bin/vault vault
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+
+source /Users/lseder/Library/Preferences/org.dystroy.broot/launcher/bash/br
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Created by `userpath` on 2020-06-15 17:14:46
+PATH="$PATH:/Users/lseder/.local/bin"
+PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH
