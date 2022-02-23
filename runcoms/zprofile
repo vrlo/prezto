@@ -94,3 +94,6 @@ export PATH="$(gem env gemdir)/bin:/usr/local/opt/ruby/bin:$PATH"
 
 # Created by `userpath` on 2020-06-15 17:14:46
 export PATH="$PATH:/Users/lseder/.local/bin"
+
+# azure function tools
+export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=1
