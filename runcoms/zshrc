@@ -44,11 +44,11 @@ alias ssh-copy-id-sekey='SSH_AUTH_SOCK=$HOME/.sekey/ssh-agent.ssh ssh-copy-id'
 alias sekeycopy='SSH_AUTH_SOCK=$HOME/.sekey/ssh-agent.ssh ssh-add -L | pbcopy'
 
 # yq like jq for yaml
-function yq {
-  ruby -ryaml -rjson -e 'puts JSON.generate(YAML.parse(STDIN.read))'
-    jq $@ |
-    ruby -ryaml -rjson -e 'puts YAML.dump(JSON.parse(STDIN.read))'
-}
+#function yq {
+#  ruby -ryaml -rjson -e 'puts JSON.generate(YAML.parse(STDIN.read))'
+#    jq $@ |
+#    ruby -ryaml -rjson -e 'puts YAML.dump(JSON.parse(STDIN.read))'
+#}
 
 # terraform aliases
 alias tf=terraform
@@ -100,6 +100,8 @@ alias klf='kubectl logs -f'
 alias krun='kubectl run --generator=run-pod/v1 -it --rm=true --restart=Never'
 alias kctx='kubectx'
 alias kns='kubens'
+alias ktn='k top no --use-protocol-buffers'
+alias ktp='k top po --use-protocol-buffers'
 
 
 autoload -U +X bashcompinit && bashcompinit
@@ -121,4 +123,10 @@ source /Users/lseder/Library/Preferences/org.dystroy.broot/launcher/bash/br
 # Created by `userpath` on 2020-06-15 17:14:46
 PATH="$PATH:/Users/lseder/.local/bin"
 PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
