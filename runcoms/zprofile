@@ -83,6 +83,15 @@ fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
 
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# fpath
+fpath=(
+  $(brew --prefix)/share/zsh/site-functions
+  $fpath
+)
+
 # escape timeout
 export KEYTIMEOUT=1
 
@@ -94,6 +103,9 @@ export PATH="$(gem env gemdir)/bin:/usr/local/opt/ruby/bin:$PATH"
 
 # Created by `userpath` on 2020-06-15 17:14:46
 export PATH="$PATH:/Users/lseder/.local/bin"
+
+# python requests
+export REQUESTS_CA_BUNDLE=/etc/ssl/cert.pem
 
 # azure function tools
 export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=1

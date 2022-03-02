@@ -15,8 +15,6 @@ fi
 # disable xon/xoff flow control
 stty -ixon
 
-fpath=(/usr/local/share/zsh-completions $fpath)
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 function iterm2_print_user_vars() {
@@ -42,13 +40,6 @@ function pby {
 alias ssh-copy-id-sekey='SSH_AUTH_SOCK=$HOME/.sekey/ssh-agent.ssh ssh-copy-id'
 # sekey export to clipboard
 alias sekeycopy='SSH_AUTH_SOCK=$HOME/.sekey/ssh-agent.ssh ssh-add -L | pbcopy'
-
-# yq like jq for yaml
-#function yq {
-#  ruby -ryaml -rjson -e 'puts JSON.generate(YAML.parse(STDIN.read))'
-#    jq $@ |
-#    ruby -ryaml -rjson -e 'puts YAML.dump(JSON.parse(STDIN.read))'
-#}
 
 # terraform aliases
 alias tf=terraform
@@ -107,6 +98,9 @@ alias ktp='k top po --use-protocol-buffers'
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/vault vault
 
+# az cli completion
+. /opt/homebrew/Cellar/azure-cli/*/etc/bash_completion.d/az
+
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
@@ -117,7 +111,6 @@ complete -o nospace -C /usr/local/bin/vault vault
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
 
-source /Users/lseder/Library/Preferences/org.dystroy.broot/launcher/bash/br
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Created by `userpath` on 2020-06-15 17:14:46
