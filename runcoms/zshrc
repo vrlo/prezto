@@ -15,19 +15,27 @@ fi
 # disable xon/xoff flow control
 stty -ixon
 
+export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 function iterm2_print_user_vars() {
   iterm2_set_user_var kubecontext "$(if type kubectl >/dev/null; then kubectl config current-context; fi)"
   iterm2_set_user_var kubenamespace "$(if type kubectl >/dev/null; then kubectl config view --minify --output 'jsonpath={..namespace}'; fi)"
+  #iterm2_set_user_var languages "$(if type jezici >/dev/null; then jezici 2>/dev/null; fi)"
 }
 
 alias mmv='noglob zmv -W'
 test -e /usr/local/share/zsh/site-functions/aws_zsh_completer.sh && source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
 
 # pyenv
-#eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
+if type pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if type pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+# direnv
+if type direnv > /dev/null; then eval "$(direnv hook zsh)"; fi
+
+# rbenv
+if type rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 
 # program yubikey slot 1 with password from clipboard
 function pby {
@@ -127,6 +135,9 @@ complete -o nospace -C /usr/local/bin/vault vault
 PATH="$PATH:/Users/lseder/.local/bin"
 PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+PATH="$(gem environment gemdir)/bin:$PATH"
 export PATH
 
 # gnu
@@ -136,3 +147,6 @@ PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# opam configuration
+[[ ! -r "${HOME}"/.opam/opam-init/init.zsh ]] || source "${HOME}"/.opam/opam-init/init.zsh  > /dev/null 2>&1
