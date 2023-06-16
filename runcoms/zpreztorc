@@ -47,6 +47,7 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'autosuggestions' \
   'history-substring-search' \
+  'contrib-prompt' \
   'prompt'
 
 #
@@ -54,7 +55,7 @@ zstyle ':prezto:load' pmodule \
 #
 
 # Set the query found color.
-zstyle ':prezto:module:autosuggestions:color' found 'fg=10'
+#zstyle ':prezto:module:autosuggestions:color' found 'fg=10'
 
 #
 # Completions
@@ -72,10 +73,10 @@ zstyle ':prezto:module:autosuggestions:color' found 'fg=10'
 zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Auto convert .... to ../..
-# zstyle ':prezto:module:editor' dot-expansion 'yes'
+zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Allow the zsh prompt context to be shown.
-#zstyle ':prezto:module:editor' ps-context 'yes'
+zstyle ':prezto:module:editor' ps-context 'yes'
 
 #
 # Git
@@ -152,7 +153,8 @@ zstyle ':prezto:module:gnu-utility' prefix 'g'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'sorin'
+# zstyle ':prezto:module:prompt' theme 'sorin'
+zstyle ':prezto:module:prompt' theme 'spaceship'
 
 # Set the working directory prompt display length.
 # By default, it is set to 'short'. Set it to 'long' (without '~' expansion)
@@ -207,6 +209,7 @@ zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
 #   'main' \
 #   'brackets' \
 #   'pattern' \
+#   'regexp' \
 #   'line' \
 #   'cursor' \
 #   'root'
@@ -226,13 +229,13 @@ zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
 #
 
 # Auto set the tab and window titles.
-zstyle ':prezto:module:terminal' auto-title 'yes'
+zstyle ':prezto:module:terminal' auto-title 'always'
 
 # Set the window title format.
-zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+zstyle ':prezto:module:terminal:window-title' format '%s'
 
-# Set the tab title format.
-zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
+# Set the tab title fomat.
+zstyle ':prezto:module:terminal:tab-title' format '%s'
 
 # Set the terminal multiplexer title format.
 zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
@@ -248,7 +251,7 @@ zstyle ':prezto:module:tmux:auto-start' local 'no'
 zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
 # Integrate with iTerm2.
-# zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
 # Set the default session name:
 # zstyle ':prezto:module:tmux:session' name 'YOUR DEFAULT SESSION NAME'
