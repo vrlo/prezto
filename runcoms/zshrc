@@ -133,6 +133,7 @@ complete -o nospace -C /usr/local/bin/vault vault
 
 # Created by `userpath` on 2020-06-15 17:14:46
 PATH="$PATH:/Users/lseder/.local/bin"
+PATH="$PATH:/Users/lseder/go/bin"
 PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
@@ -145,8 +146,8 @@ PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # opam configuration
 [[ ! -r "${HOME}"/.opam/opam-init/init.zsh ]] || source "${HOME}"/.opam/opam-init/init.zsh  > /dev/null 2>&1
