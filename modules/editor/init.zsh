@@ -101,15 +101,18 @@ function editor-info {
     if [[ "$KEYMAP" == 'vicmd' ]]; then
       zstyle -s ':prezto:module:editor:info:keymap:alternate' format 'REPLY'
       editor_info[keymap]="$REPLY"
+      printf '\e]50;CursorShape=0\x7' # Set cursor to block.
     else
       zstyle -s ':prezto:module:editor:info:keymap:primary' format 'REPLY'
       editor_info[keymap]="$REPLY"
 
       if [[ "$ZLE_STATE" == *overwrite* ]]; then
         zstyle -s ':prezto:module:editor:info:keymap:primary:overwrite' format 'REPLY'
+        printf '\e]50;CursorShape=2\x7' # Set cursor to underline.
         editor_info[overwrite]="$REPLY"
       else
         zstyle -s ':prezto:module:editor:info:keymap:primary:insert' format 'REPLY'
+        printf '\e]50;CursorShape=1\x7' # Set cursor to vertical bar.
         editor_info[overwrite]="$REPLY"
       fi
     fi
