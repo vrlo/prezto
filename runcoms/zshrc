@@ -73,6 +73,7 @@ alias kcgc='kubectl config get-contexts'
 alias kaf='kubectl apply -f'
 alias keti='kubectl exec -ti'
 alias kg="kubectl get -o $K8S_OUTPUT_FORMAT"
+alias ky="kubectl get -o yaml"
 alias kgn='kg no'
 alias kgno=kgn
 alias kgs='kg svc'
@@ -107,12 +108,26 @@ alias ktn='k top no --use-protocol-buffers'
 alias ktp='k top po --use-protocol-buffers'
 # cluster api
 alias c='clusterctl'
+alias cdc='c describe cluster'
 
 # git
 alias gsh='git show HEAD'
 # cd to git root
 alias cdgr='git rev-parse --is-inside-work-tree >/dev/null && cd "$(git rev-parse --show-prefix | sed -E "s,[^/]+,..,g")"'
 
+# docker
+alias dr='docker run --rm -it'
+alias dr86='docker run --platform=linux/amd64 --rm -it'
+
+# llm
+alias llo='llm -m 4o'
+alias lli='llm -m i'
+alias llc='llm -m claude-3.5-sonnet'
+
+# bat
+alias bat="bat --theme=\$(defaults read -g AppleInterfaceStyle 2>/dev/null && echo tokyonight_moon || echo tokyonight_day)"
+
+###
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/vault vault
 
@@ -151,3 +166,18 @@ export NVM_DIR="$HOME/.nvm"
 
 # opam configuration
 [[ ! -r "${HOME}"/.opam/opam-init/init.zsh ]] || source "${HOME}"/.opam/opam-init/init.zsh  > /dev/null 2>&1
+
+#[[ -s "/Users/lseder/.gvm/scripts/gvm" ]] && source "/Users/lseder/.gvm/scripts/gvm"
+
+# zoxide
+eval "$(zoxide init zsh)"
+
+# yazi
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
